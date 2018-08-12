@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Instruction.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/arrow.png" type="Texture" id=2]
+[ext_resource path="res://assets/sounds/bip.wav" type="AudioStream" id=3]
+
+[node name="Instruction" type="Node2D"]
+
+position = Vector2( 394.162, 195.411 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="ActionTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = true
+autostart = false
+
+[node name="FinalTween" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="MissAudio" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 1.5
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]
+
+[connection signal="tween_completed" from="FinalTween" to="." method="_on_FinalTween_tween_completed"]
+
+
