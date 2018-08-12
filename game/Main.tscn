@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Instruction.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/sounds/continuum-theme-song.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/win.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/lose.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/hit.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -119,12 +122,39 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="7"]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." index="7"]
 
 stream = ExtResource( 8 )
 volume_db = -4.0
 pitch_scale = 1.0
 autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="WinSound" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="StartSound" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 11 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
 mix_target = 0
 bus = "Master"
 

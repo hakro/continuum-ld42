@@ -31,6 +31,7 @@ func _input(event):
 
 func win():
 	emit_signal("correct_action")
+	$HitAudio.play()
 	# Disable the _input function and play the Tween
 	$FinalTween.start()
 	set_process_input(false)

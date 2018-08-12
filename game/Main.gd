@@ -40,16 +40,22 @@ func play_sequence():
 func game_over(health, pressure):
 	# Win
 	if pressure <= 0:
+		$WinSound.play()
+		$BackgroundMusic.stop()
 		$MessageLabel.show()
 		$MessageLabel.text = "You Won!\nTeddy can go back to his family\nSpaceBar to restart"
 		player_ready = false
 		$Continuum.set_physics_process(false)
+		set_process(false)
 	
 	# Lose 
 	if health <= 0:
+		$LoseSound.play()
+		$BackgroundMusic.stop()
 		$MessageLabel.show()
 		$MessageLabel.text = "You Lost!\nTeddy was swallowed by the Black Hole!\nSpaceBar to restart"
 		player_ready = false
+		set_process(false)
 
 func _on_GetReadyTimer_timeout():
 	player_ready = true
@@ -58,6 +64,7 @@ func _on_GetReadyTimer_timeout():
 
 func _on_HUD_start_game():
 	$GetReadyTimer.start()
+	$StartSound.play()
 	$GetReadyLabel.show()
 	$HUD/Health.show()
 	$HUD/Pressure.show()
@@ -65,7 +72,7 @@ func _on_HUD_start_game():
 func _on_Instruction_correct_action():
 	# 0.03, very easy
 	# 0.02 very hard
-	$Continuum.grow(0.023)
+	$Continuum.grow(0.022)
 
 func _on_Instruction_incorrect_action():
 	$Continuum.shrink(0.01)
