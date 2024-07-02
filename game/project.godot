@@ -6,13 +6,18 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
 
 [application]
 
 config/name="Continuum"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [global]
 
@@ -22,4 +27,5 @@ speed=false
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_clear_color=Color( 0.902344, 0.817749, 0.817749, 1 )

@@ -13,155 +13,75 @@
 [ext_resource path="res://assets/sounds/hit.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 30
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 7 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 24
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 7 )
-_sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Main" type="Node2D" index="0"]
-
+[node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 Instruction = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -4.0
 margin_top = -2.0
-margin_right = 963.0
-margin_bottom = 543.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+margin_right = 1041.0
+margin_bottom = 604.0
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 0
 
-[node name="Continuum" parent="." index="1" instance=ExtResource( 4 )]
-
+[node name="Continuum" parent="." instance=ExtResource( 4 )]
 position = Vector2( 420, 300 )
 
-[node name="Teddy" parent="." index="2" instance=ExtResource( 5 )]
-
+[node name="Teddy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 420, 300 )
 
-[node name="HUD" parent="." index="3" instance=ExtResource( 6 )]
+[node name="HUD" parent="." instance=ExtResource( 6 )]
 
-[node name="GetReadyTimer" type="Timer" parent="." index="4"]
-
-process_mode = 1
+[node name="GetReadyTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = false
 
-[node name="GetReadyLabel" type="Label" parent="." index="5"]
-
+[node name="GetReadyLabel" type="Label" parent="."]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 352.0
 margin_top = 460.0
 margin_right = 488.0
 margin_bottom = 496.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 text = "Get Ready"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
-[node name="MessageLabel" type="Label" parent="." index="6"]
-
+[node name="MessageLabel" type="Label" parent="."]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 176.0
 margin_top = 430.0
 margin_right = 662.0
 margin_bottom = 561.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
 text = "Game Over!"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." index="7"]
-
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -4.0
-pitch_scale = 1.0
 autoplay = true
-mix_target = 0
-bus = "Master"
 
-[node name="WinSound" type="AudioStreamPlayer" parent="." index="8"]
-
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
 
-[node name="LoseSound" type="AudioStreamPlayer" parent="." index="9"]
-
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
 
-[node name="StartSound" type="AudioStreamPlayer" parent="." index="10"]
-
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[connection signal="start_game" from="HUD" to="Continuum" method="_on_HUD_start_game"]
 
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
-
+[connection signal="start_game" from="HUD" to="Continuum" method="_on_HUD_start_game"]
 [connection signal="timeout" from="GetReadyTimer" to="." method="_on_GetReadyTimer_timeout"]
-
-
